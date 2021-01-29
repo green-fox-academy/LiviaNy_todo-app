@@ -9,8 +9,11 @@ if (process.argv.length === 2) {
   );
 } else {
   if (process.argv[2] === `-l`) {
-    let fileContent = fs.readFileSync(`./tasks.txt`, `utf-8`);
-    console.log(fileContent);
+    let fileContent = fs.readFileSync(`./tasks.txt`, `utf-8`).split(`\n`);
+    for (let i: number = 0; i < fileContent.length; i++) {
+      console.log(i + ` - ` + fileContent[i]);
+    }
+    // console.log(fileContent);
   } else if (process.argv[2] === `-a`) {
     //add new task
   } else if (process.argv[2] === `-r`) {
