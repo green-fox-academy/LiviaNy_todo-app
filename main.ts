@@ -10,9 +10,14 @@ if (process.argv.length === 2) {
 } else {
   if (process.argv[2] === `-l`) {
     let fileContent = fs.readFileSync(`./tasks.txt`, `utf-8`).split(`\n`);
-    for (let i: number = 0; i < fileContent.length; i++) {
-      console.log(i + ` - ` + fileContent[i]);
+    if (fileContent.length !== 1) {
+      for (let i: number = 0; i < fileContent.length - 1; i++) {
+        console.log(i + 1 + ` - ` + fileContent[i + 1]);
+      }
+    } else if (fileContent.length === 1) {
+      console.log(`No todos for today!`);
     }
+
     // console.log(fileContent);
   } else if (process.argv[2] === `-a`) {
     //add new task
