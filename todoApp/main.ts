@@ -29,6 +29,9 @@ if (process.argv.length === 2) {
     }
     //add new task
   } else if (process.argv.indexOf(`-r`) !== -1) {
+    if (process.argv.indexOf(`-r`) !== -1) {
+      newList.clearTodoList();
+    }
     //removes a task
   } else if (process.argv.indexOf(`-c`) !== -1) {
     //complete a task

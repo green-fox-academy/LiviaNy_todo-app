@@ -17,7 +17,9 @@ export class List {
     fs.writeFileSync(`tasks.txt`, `\n` + taskToAdd.toString(), { flag: `a+` });
   }
 
-  clearTodoList() {}
+  clearTodoList() {
+    fs.writeFileSync(`tasks.txt`, `Tasks for today:`);
+  }
 
   removeTask() {}
 }
