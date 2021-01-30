@@ -2,7 +2,13 @@
 const fs = require(`fs`);
 import { List } from './list';
 let newList = new List(`ListForToday`);
-
+try {
+  if (process.argv[2] !== `-l` || `-a` || `-r` || `-c`) {
+    throw new Error(`Unsupported argument`);
+  }
+} catch (err) {
+  console.log(`Unable to run:` + err.message);
+}
 if (process.argv.length === 2) {
   console.log(
     `Command Line Todo applivation \n============================\nCommand line arguments:\n    -l  List all tasks\n    -a  Adds a new task\n    -r  Remove a task\n    -c  Complete a task`
@@ -16,7 +22,7 @@ if (process.argv.length === 2) {
       newList.addTodo(process.argv[3]);
     }
   } catch (err) {
-    console.log(`Unable to add: no task provided`, err);
+    console.log(`Unable to add: no task provided`);
   }
 
   let indexOfCriteria: number = process.argv.indexOf(`-r`) + 1;
