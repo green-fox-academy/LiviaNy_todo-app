@@ -21,9 +21,9 @@ if (process.argv.length === 2) {
     // console.log(fileContent);
   } else if (process.argv.indexOf(`-a`) !== -1) {
     //add new task
-  } else if (process.argv[2] === `-r`) {
+  } else if (process.argv.indexOf(`-r`) !== -1) {
     //removes a task
-  } else if (process.argv[2] === `-c`) {
+  } else if (process.argv.indexOf(`-c`) !== -1) {
     //complete a task
   } else {
     console.log(`No such command`);
