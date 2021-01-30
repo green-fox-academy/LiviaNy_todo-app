@@ -16,14 +16,24 @@ if (process.argv.length === 2) {
       newList.addTodo(process.argv[3]);
     }
   } catch (err) {
-    console.log(`Unable to add: no task provided`);
+    console.log(`Unable to add: no task provided`, err);
   }
 
   let indexOfCriteria: number = process.argv.indexOf(`-r`) + 1;
-  if (process.argv.indexOf(`-r`) !== -1 && process.argv[indexOfCriteria] === `0`) {
-    newList.clearTodoList();
-  } else if (process.argv.indexOf(`-r`) !== -1 && process.argv[indexOfCriteria] !== `0`) {
-    newList.removeTask(process.argv[indexOfCriteria]);
+  if (process.argv.indexOf(`-r`) !== -1) {
+    try {
+      if (process.argv[indexOfCriteria] === `0`) {
+        newList.clearTodoList();
+      } else if (process.argv[indexOfCriteria] > `0`) {
+        newList.removeTask(process.argv[indexOfCriteria]);
+      } else if (process.argv[indexOfCriteria] === undefined) {
+        throw new Error(`no index provided`);
+      }
+    } catch (err) {
+      {
+        console.log(`Unable to remove:` + err.message);
+      }
+    }
   }
 }
 
