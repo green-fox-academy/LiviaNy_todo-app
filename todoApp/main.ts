@@ -1,7 +1,9 @@
 `use strict`;
 const fs = require(`fs`);
-
+import { Todo } from './todo';
+import { List } from './list';
 let tasks: string[] = [];
+let newList = new List(`ListForToday`);
 // console.log(process.argv);
 if (process.argv.length === 2) {
   console.log(
@@ -20,6 +22,11 @@ if (process.argv.length === 2) {
 
     // console.log(fileContent);
   } else if (process.argv.indexOf(`-a`) !== -1) {
+    if (process.argv.indexOf(`-a`) + 1 === 3) {
+      newList.addTodo(process.argv[3]);
+    } else {
+      console.log(`Please add a task.`);
+    }
     //add new task
   } else if (process.argv.indexOf(`-r`) !== -1) {
     //removes a task

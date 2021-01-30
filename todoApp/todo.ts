@@ -1,3 +1,5 @@
+`use strict`;
+
 export class Todo {
   protected _task: string;
   protected _idDone: boolean;
