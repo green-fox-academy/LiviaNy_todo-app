@@ -2,6 +2,7 @@
 const fs = require(`fs`);
 import { List } from './list';
 let newList = new List(`ListForToday`);
+
 try {
   if (process.argv[2] !== `-l` || `-a` || `-r` || `-c`) {
     throw new Error(`Unsupported argument`);
@@ -17,14 +18,15 @@ if (process.argv.length === 2) {
   if (process.argv.indexOf(`-l`) !== -1) {
     newList.listTodos();
   }
-  try {
-    if (process.argv.indexOf(`-a`) !== -1 && process.argv.indexOf(`-a`) + 1 === 3) {
-      newList.addTodo(process.argv[3]);
+  if (process.argv.indexOf(`-a`) !== -1) {
+    try {
+      if (process.argv.indexOf(`-a`) + 1 === 3) {
+        newList.addTodo(process.argv[3]);
+      }
+    } catch (err) {
+      console.log(`Unable to add: no task provided`);
     }
-  } catch (err) {
-    console.log(`Unable to add: no task provided`);
   }
-
   let indexOfCriteria: number = process.argv.indexOf(`-r`) + 1;
   if (process.argv.indexOf(`-r`) !== -1) {
     try {
@@ -48,7 +50,7 @@ if (process.argv.length === 2) {
       }
     }
   }
+  if (process.argv.indexOf(`-c`) !== -1) {
+    newList.doneTask(parseInt(process.argv[process.argv.indexOf(`-c`) + 1]));
+  }
 }
-
-// console.log(parseInt(process.argv[process.argv.indexOf(`-r`) + 1]));
-// console.log(newList.lengthOfList().toString());
