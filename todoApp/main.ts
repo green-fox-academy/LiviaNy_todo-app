@@ -24,10 +24,15 @@ if (process.argv.length === 2) {
     try {
       if (process.argv[indexOfCriteria] === `0`) {
         newList.clearTodoList();
-      } else if (process.argv[indexOfCriteria] > `0`) {
+      } else if (
+        process.argv[indexOfCriteria] > `0` &&
+        parseInt(process.argv[indexOfCriteria]) < newList.lengthOfList()
+      ) {
         newList.removeTask(process.argv[indexOfCriteria]);
       } else if (process.argv[indexOfCriteria] === undefined) {
         throw new Error(`no index provided`);
+      } else if (parseInt(process.argv[indexOfCriteria]) > newList.lengthOfList()) {
+        throw new Error(`index is out of bond`);
       }
     } catch (err) {
       {
@@ -38,4 +43,4 @@ if (process.argv.length === 2) {
 }
 
 // console.log(process.argv[process.argv.indexOf(`-r`) + 1]);
-// console.log(process.argv[process.argv.indexOf(`-r`) + 1]);
+// console.log(newList.lengthOfList().toString());

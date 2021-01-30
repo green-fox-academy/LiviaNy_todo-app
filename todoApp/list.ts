@@ -38,6 +38,11 @@ export class List {
     fs.writeFileSync(`tasks.txt`, todos.join(`\n`));
   }
 
+  lengthOfList(): number {
+    let list: string[] = fs.readFileSync(`tasks.txt`, `utf-8`).split(`\n`);
+    return list.length - 1;
+  }
+
   doneTask() {}
 }
 
