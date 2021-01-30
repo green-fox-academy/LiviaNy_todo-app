@@ -25,7 +25,7 @@ if (process.argv.length === 2) {
     if (process.argv.indexOf(`-a`) + 1 === 3) {
       newList.addTodo(process.argv[3]);
     } else {
-      console.log(`Please add a task.`);
+      console.log(`Unable to add: no task provided`);
     }
     //add new task
   } else if (process.argv.indexOf(`-r`) !== -1) {
@@ -34,6 +34,11 @@ if (process.argv.length === 2) {
     }
     //removes a task
   } else if (process.argv.indexOf(`-c`) !== -1) {
+    if (process.argv.indexOf(`-c`) + 1 === -1) {
+      console.log(`Please type index of task to delete.`);
+    } else {
+      newList.removeTask(process.argv[3]);
+    }
     //complete a task
   } else {
     console.log(`No such command`);

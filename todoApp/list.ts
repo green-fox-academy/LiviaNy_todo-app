@@ -17,9 +17,16 @@ export class List {
     fs.writeFileSync(`tasks.txt`, `\n` + taskToAdd.toString(), { flag: `a+` });
   }
 
-  clearTodoList() {
+  clearTodoList(): void {
     fs.writeFileSync(`tasks.txt`, `Tasks for today:`);
   }
 
-  removeTask() {}
+  removeTask(indexOfTaskToRemove: any): void {
+    let todos = fs.readFileSync(`tasks.txt`, `utf-8`).split(`\n`);
+    todos.splice(indexOfTaskToRemove, 1);
+    fs.writeFileSync(`tasks.txt`, todos.join(`\n`));
+  }
 }
+
+// let newList = new List(`Todaystodo`);
+// newList.removeTask(2);
