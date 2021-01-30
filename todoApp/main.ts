@@ -33,6 +33,8 @@ if (process.argv.length === 2) {
         throw new Error(`no index provided`);
       } else if (parseInt(process.argv[indexOfCriteria]) > newList.lengthOfList()) {
         throw new Error(`index is out of bond`);
+      } else if (isNaN(parseInt(process.argv[indexOfCriteria]))) {
+        throw new Error(`index is not a number`);
       }
     } catch (err) {
       {
@@ -42,5 +44,5 @@ if (process.argv.length === 2) {
   }
 }
 
-// console.log(process.argv[process.argv.indexOf(`-r`) + 1]);
+// console.log(parseInt(process.argv[process.argv.indexOf(`-r`) + 1]));
 // console.log(newList.lengthOfList().toString());
