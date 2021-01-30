@@ -8,7 +8,7 @@ if (process.argv.length === 2) {
     `Command Line Todo applivation \n============================\nCommand line arguments:\n    -l  List all tasks\n    -a  Adds a new task\n    -r  Remove a task\n    -c  Complete a task`
   );
 } else {
-  if (process.argv[2] === `-l`) {
+  if (process.argv.indexOf(`-l`) !== -1) {
     let fileContent = fs.readFileSync(`./tasks.txt`, `utf-8`).split(`\n`);
     if (fileContent.length !== 1) {
       for (let i: number = 0; i < fileContent.length - 1; i++) {
@@ -19,7 +19,7 @@ if (process.argv.length === 2) {
     }
 
     // console.log(fileContent);
-  } else if (process.argv[2] === `-a`) {
+  } else if (process.argv.indexOf(`-a`) !== -1) {
     //add new task
   } else if (process.argv[2] === `-r`) {
     //removes a task
