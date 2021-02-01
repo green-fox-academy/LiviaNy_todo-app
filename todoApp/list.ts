@@ -1,6 +1,5 @@
 `use strict`;
 let fs = require(`fs`);
-import { Todo } from './todo';
 
 export class List {
   protected _name: string;

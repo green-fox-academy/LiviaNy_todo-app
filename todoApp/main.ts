@@ -4,11 +4,11 @@ import { List } from './list';
 let newList = new List(`ListForToday`);
 
 try {
-  if (process.argv[2] !== `-l` || `-a` || `-r` || `-c`) {
+  if (process.argv.indexOf(`-l` || `-a` || `-r` || `-c`) === -1) {
     throw new Error(`Unsupported argument`);
   }
 } catch (err) {
-  console.log(`Unable to run:` + err.message);
+  console.log(`Unable to run: `, err.message);
 }
 if (process.argv.length === 2) {
   console.log(
@@ -50,7 +50,7 @@ if (process.argv.length === 2) {
       }
     }
   }
-  if (process.argv.indexOf(`-c`) !== -1) {
-    newList.doneTask(parseInt(process.argv[process.argv.indexOf(`-c`) + 1]));
-  }
+  // if (process.argv.indexOf(`-c`) !== -1) {
+  // newList.doneTask(parseInt(process.argv[process.argv.indexOf(`-c`) + 1]));
+  // }
 }
